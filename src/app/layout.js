@@ -1,13 +1,11 @@
-import { Geist, Geist_Mono } from "next/font/google";
+import { Montserrat, Poppins } from "next/font/google";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const poppins = Poppins({
   subsets: ["latin"],
+  weight: ['400','500','700','800','900'],
 });
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+export const montserrat = Montserrat({
   subsets: ["latin"],
 });
 
@@ -20,9 +18,12 @@ export default function RootLayout({ children }) {
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      className={`h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className={`w-10/12 mx-auto min-h-full flex flex-col ${poppins.className}`}>
+          
+          {children}
+      </body>
     </html>
   );
 }
