@@ -1,29 +1,21 @@
 import Image from "next/image";
 import Link from "next/link";
-import { BsArrowLeft } from "react-icons/bs";
-import { CiShare2 } from "react-icons/ci";
+import { CiShare2, CiStar } from "react-icons/ci";
 import { FaEye } from "react-icons/fa";
 import { IoIosStar } from "react-icons/io";
 import { LuBookMarked } from "react-icons/lu";
-const getSingleCategoryById=async(id)=>{
-        const res=await fetch(`https://openapi.programming-hero.com/api/news/${id}`);
-        const data=res.json();
-        return data;
-    }
-const NewsDetailsPage = async({params}) => {
-    const {id}=await params;
-    const categoryData= await getSingleCategoryById(id);
-    const data=categoryData.data[0];
-    //console.log(categoryData.data[0]);
+
+const NewsCard = ({data}) => {
+    //console.log(data);
     return (
-        <div className="my-8 card w-96 mx-auto">
-            <div className="card-body">
+        <div className="card bg-base-100 shadow-sm">
+  <div className="card-body">
     {/* Autho Info */}
     <div className="flex justify-between items-center bg-gray-300 rounded p-4">
         <div className="flex gap-3">
             <Image 
             src={data.author?.img} 
-            alt={data.author?.name} 
+            alt={data.autho?.name} 
             height={40} 
             width={40 } 
             className="rounded-full"></Image>
@@ -47,13 +39,16 @@ const NewsDetailsPage = async({params}) => {
         <h2 className="flex items-center gap-2"><IoIosStar className="text-lg text-yellow-500 inline-block"></IoIosStar>{data.rating.number}</h2>
         <h2 className="flex items-center gap-2"><FaEye></FaEye>{data.total_view}</h2>
     </div>
-    <Link href={`/category/${data.category_id}`}>
-    <button className="btn bg-purple-500 text-white"><BsArrowLeft></BsArrowLeft> See other news for this categories</button>
+    <Link href={`/news/${data._id}`}>
+    <button className="btn bg-purple-500 text-white">See details</button>
     </Link>
   </div>
   </div>
-        </div>
+  
+</div>
+
+
     );
 };
 
-export default NewsDetailsPage;
+export default NewsCard;

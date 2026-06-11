@@ -15,8 +15,6 @@ const RightSideBar = () => {
 
 
 
-
-
 <h2 className="font-bold  text-lg text-gray-700 my-5">Find Us On</h2>
                 <div className="border border-gray-300 rounded-md space-y-3 py-3 space-x-3">
                     <button 
