@@ -1,5 +1,6 @@
 import { Montserrat, Poppins } from "next/font/google";
 import "./globals.css";
+import { ToastContainer } from "react-toastify";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -16,14 +17,13 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html
-      lang="en"
-      className={`h-full antialiased`}
-    >
-      <body className={`w-10/12 mx-auto min-h-full flex flex-col ${poppins.className}`}>
-          
-          {children}
-      </body>
-    </html>
+      <html lang="en" className={`h-full antialiased`}>
+          <body
+              className={`w-10/12 mx-auto min-h-full flex flex-col ${poppins.className}`}
+          >
+              {children}
+              <ToastContainer />
+          </body>
+      </html>
   );
 }
