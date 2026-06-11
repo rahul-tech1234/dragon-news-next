@@ -1,3 +1,4 @@
+import { getSingleCategoryById } from "@/lib/data";
 import Image from "next/image";
 import Link from "next/link";
 import { BsArrowLeft } from "react-icons/bs";
@@ -5,11 +6,6 @@ import { CiShare2 } from "react-icons/ci";
 import { FaEye } from "react-icons/fa";
 import { IoIosStar } from "react-icons/io";
 import { LuBookMarked } from "react-icons/lu";
-const getSingleCategoryById=async(id)=>{
-        const res=await fetch(`https://openapi.programming-hero.com/api/news/${id}`);
-        const data=res.json();
-        return data;
-    };
 export async function generateMetadata({ params}) {
   //console.log(params);
     const {id} =await params;
@@ -56,7 +52,7 @@ const NewsDetailsPage = async({params}) => {
     <figure>
     <Image src={data.image_url} alt={data.author.name} width={100} height={100} className="w-full"></Image>
   </figure>
-  <p className="text-left line-clamp-3  text-[16px] mb-4 ">{data.details}</p>
+  <p className="text-left text-[16px] mb-4 ">{data.details}</p>
   <div className="flex justify-between items-center">
     <div className="flex items-center gap-5">
         <h2 className="flex items-center gap-2"><IoIosStar className="text-lg text-yellow-500 inline-block"></IoIosStar>{data.rating.number}</h2>

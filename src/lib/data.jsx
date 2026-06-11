@@ -15,3 +15,8 @@ export const getNewsByCategoriesId = async (category_id) => {
     const data = await category.data;
     return data;
 };
+export const getSingleCategoryById=async(id)=>{
+        const res=await fetch(`https://openapi.programming-hero.com/api/news/${id}`);
+        const data=res.json();
+        return data;
+    };
