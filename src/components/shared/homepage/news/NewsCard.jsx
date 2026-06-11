@@ -6,7 +6,7 @@ import { IoIosStar } from "react-icons/io";
 import { LuBookMarked } from "react-icons/lu";
 
 const NewsCard = ({data}) => {
-    //console.log(data);
+    //console.log(data._id);
     return (
         <div className="card bg-base-100 shadow-sm">
   <div className="card-body">
@@ -15,7 +15,7 @@ const NewsCard = ({data}) => {
         <div className="flex gap-3">
             <Image 
             src={data.author?.img} 
-            alt={data.autho?.name} 
+            alt={data._id} 
             height={40} 
             width={40 } 
             className="rounded-full"></Image>
@@ -31,7 +31,7 @@ const NewsCard = ({data}) => {
     </div>
     <h2 className="card-title font-bold text-left py-3">{data.title}</h2>
     <figure>
-    <Image src={data.image_url} alt={data.author.name} width={100} height={100} className="w-full"></Image>
+    <Image src={data.image_url} alt={data._id} width={100} height={100} className="w-full"></Image>
   </figure>
   <p className="text-left line-clamp-3  text-[16px] mb-4 ">{data.details}</p>
   <div className="flex justify-between items-center">
