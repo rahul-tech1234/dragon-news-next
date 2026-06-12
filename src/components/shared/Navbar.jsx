@@ -7,7 +7,7 @@ import { authClient } from '@/lib/auth-client';
 const Navbar = () => {
     const { data: session,isPending } = authClient.useSession();
     const user=session?.user;
-    console.log('user=>', user);
+    //console.log('user=>', user);
     return (
         <div className='flex justify-between items-center mt-6'>
             <div></div>
@@ -25,7 +25,7 @@ const Navbar = () => {
                 onClick={async()=>await authClient.signOut()}>
                     Logout
                 </button>
-            </div>:<Link href={'/login'}>Login</Link>
+            </div>:<Link href={'/login'} className='btn bg-purple-500 text-white'>Login</Link>
             }
             
         </div>

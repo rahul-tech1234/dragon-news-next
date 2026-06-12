@@ -1,3 +1,4 @@
+"use client";
 import Image from "next/image";
 import { BsGithub, BsGoogle } from "react-icons/bs";
 import Class from "@/assets/class.png";
@@ -7,11 +8,28 @@ import Banner from '@/assets/bg.png'
 import Facebook from '@/assets/fb.png'
 import Twitter from '@/assets/twitter.png'
 import Insta from '@/assets/instagram.png'
+import { authClient } from "@/lib/auth-client";
 const RightSideBar = () => {
+    const handleGoogleSignIn=async()=>{
+        const data = await authClient.signIn.social({
+        provider: "google",
+    });
+}
+    const githubsignIn = async () => {
+        const data = await authClient.signIn.social({
+            provider: "github"
+        })
+}
+  
+    
     return (
         <div className="space-y-2">
-            <button className="btn border border-blue-500 text-blue-500 w-full flex items-center font-normal"><BsGoogle></BsGoogle>Login with Google</button>            
-            <button className="btn flex items-center w-full border font-normal"><BsGithub></BsGithub>Login with Google</button>
+            <button
+            onClick={handleGoogleSignIn} 
+            className=
+            "btn border border-blue-500 text-blue-500 w-full flex items-center font-normal"
+            ><BsGoogle></BsGoogle>Login with Google</button>            
+            <button className="btn flex items-center w-full border font-normal" onClick={githubsignIn}><BsGithub></BsGithub>Login with Google</button>
 
 
 
